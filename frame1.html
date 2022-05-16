@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frame 1</title>
+    <style>
+        body {
+            background-color: lightyellow;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button {
+            padding: 5px 10px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+    <button id='btn'>Change color to light yellow</button>
+    <script>
+        const btn = document.getElementById('btn')
+
+        btn.onclick = () => {
+            window.parent.postMessage('lightyellow', '*')
+        }
+
+        window.addEventListener("message", (message) => {
+            if (message.data === 'lightblue') {
+                document.body.style.background = 'lightblue'
+            } else if (message.data === 'lightgreen') {
+                document.body.style.background = 'lightgreen'
+            } else if (message.data === 'lightcoral') {
+                document.body.style.background = 'lightcoral'
+            } else {
+                document.body.style.background = 'lightyellow'
+            }
+        })
+    </script>
+</body>
+
+</html>
